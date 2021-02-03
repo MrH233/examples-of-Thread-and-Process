@@ -1,7 +1,6 @@
 import os
 import multiprocessing
 import time
-import threading
 i = 0          # the num of Threads is already  (in need of changing to Threads)
 
 
@@ -27,7 +26,7 @@ def main(dir_name, dir_create, doc_list):
     waitting_list = []
 
     # 3.Build processing pool
-    po = duplicate_multiprocessing.Pool(3)
+    po = multiprocessing.Pool(3)
     # 4.Add process
     for file in doc_list:    # judge the doc is dir or not
         if os.path.isdir(dir_name + '\\' + file) and file != dir_name.split('\\')[-1]:
