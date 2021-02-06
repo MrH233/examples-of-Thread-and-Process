@@ -26,7 +26,7 @@ def main(dir_name, dir_create, doc_list):
     waitting_list = []
 
     # 3.Build processing pool
-    po = multiprocessing.Pool(3)
+    po = multiprocessing.Pool(5)
     # 4.Add process
     for file in doc_list:    # judge the doc is dir or not
         if os.path.isdir(dir_name + '\\' + file) and file != dir_name.split('\\')[-1]:
@@ -47,10 +47,6 @@ def main(dir_name, dir_create, doc_list):
                     dir_create = dir_name + '\\' + dir_name.split('\\')[-1]
                 dir_create += '\\' + dir_file
                 main(dirs, dir_create, doc_name_list_update)
-        #       i += 1
-        # for count in range(i - len(doc_name_list_update), i):        # in need of changing to treads
-        #     print("开始")
-        #     locals()[f"t{count}"].start()
     else:
         dir_create = dir_name_init + '\\' + dir_name_init.split('\\')[-1]
         print("复制已完毕！")
